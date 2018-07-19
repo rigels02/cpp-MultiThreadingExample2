@@ -1,4 +1,4 @@
-# To use C++11 threads under windows MinGW-64 should be installed
+# To use C++11 threads under windows, MinGW-64 should be installed
 
 - download MinGW64 exe installer from:
     [Mingw64- SourceForge](https://sourceforge.net/projects/mingw-w64/)
