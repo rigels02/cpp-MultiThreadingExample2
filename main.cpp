@@ -12,7 +12,7 @@ void thread_function()
 {
 
     for(int i = 0; i < 10; i++){
-         std::cout<<"thread function Executing..."<<this_thread::get_id()<<std::endl;
+         std::cout<<"thread function Executing...thread id= "<<this_thread::get_id()<<" "<<std::endl;
         std::chrono::duration<int, std::milli> timespan(1000);
         std::this_thread::sleep_for(timespan);
     }
@@ -47,14 +47,19 @@ int testMultithreadedWallet()
 int main()
 {
     int val = 0;
+    bool tpass = true;
         for(int k = 0; k < 1000; k++)
         {
             if((val = testMultithreadedWallet()) != 5000)
             {
                 std::cout << "Error at count = "<<k<<"  Money in Wallet = "<<val << std::endl;
+                tpass = false;
                 //break;
             }
         }
+    if(tpass){
+    std::cout<<"========= testMultithreadedWallet passed...======="<< std::endl;
+    }        
     /*
     *Pass the pointer to member function as callback function and
     * pass pointer to Object as second argument, argumrnt third
@@ -64,16 +69,17 @@ int main()
         std::thread threadObj0(&DummyClass::sampleMemberFunction,&dummyObj, x);
         threadObj0.join();
     //----------------//
+        std::cout<<"Thread is changing ref value x..."<<std::endl;
         x = 9;
         std::cout<<"In Main Thread : Before Thread Start x = "<<x<<std::endl;
         std::thread threadObj(threadCallback, std::ref(x));
         threadObj.join();
-        std::cout<<"In Main Thread : After Thread Joins x = "<<x<<std::endl;
+        std::cout<<"In Main Thread : After Thread Joins, x = "<<x<<std::endl;
 
     std::thread threadObj1(thread_function);
 
     for(int i = 0; i < 10; i++){
-        std::cout<<"Display From MainThread..."<<this_thread::get_id() <<std::endl;
+        std::cout<<"Display From MainThread... Thread id= "<<this_thread::get_id()<<" "<<std::endl;
             std::chrono::duration<int, std::milli> timespan(1000);
             std::this_thread::sleep_for(timespan);
         }
