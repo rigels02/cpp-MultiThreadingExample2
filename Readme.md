@@ -15,4 +15,10 @@
 - in Netbeans Tools/Options/C++ in Build Tools add new build collection's base directory : C:\MinGW64\mingw32\bin
 
 ![see](NetbeansOptions.png)
+
+- for pretty printing STL containers debug info you should select project properties 
+    and in  Debug categories set  gdbinit file: C:\MinGW64\mingw32\etc\gdbinit or
+    create gdbinit  file C:\Users\raitis\.gdbinit (Netbeans default location) with 
+    contents from in C:\MinGW64\mingw32\etc\gdbinit file.
  
+![see](gdbinit.png)
