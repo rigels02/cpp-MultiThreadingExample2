@@ -4,6 +4,7 @@
 
 #include "dummyclass.h"
 #include "wallet.h"
+#include "threads_and_cpu.h"
 
 using namespace std;
 
@@ -85,7 +86,10 @@ int main()
         }
             std::cout<<"MainThread completed"<<std::endl;
         threadObj1.join();
-        std::cout<<"Exit of Main function"<<std::endl;
+    
+    threads_and_cpu::threads_cpu();
+    
+    std::cout<<"Exit of Main function"<<std::endl;
         //-----------------//
 
         return 0;
